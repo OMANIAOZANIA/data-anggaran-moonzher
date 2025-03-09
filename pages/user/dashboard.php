@@ -1,5 +1,5 @@
 <?php
-$ROOT = "http://".$_SERVER['HTTP_HOST']."/data-anggaran";
+$ROOT = "https://".$_SERVER['HTTP_HOST'];
 session_start();
 date_default_timezone_set('Asia/Jakarta');
 
@@ -25,7 +25,7 @@ if (isset($_POST['logout'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="/data-anggaran/styles/dashboard.css">
+    <link rel="stylesheet" href="/styles/dashboard.css">
 </head>
 <body>
     <div class="dashboard-container">

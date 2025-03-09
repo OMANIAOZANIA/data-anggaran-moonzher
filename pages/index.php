@@ -1,5 +1,5 @@
 <?php
-$ROOT = "http://".$_SERVER['HTTP_HOST']."/data-anggaran";
+$ROOT = "https://".$_SERVER['HTTP_HOST'];
 session_start();
 if (!isset($_SESSION['username'])) {
     // balik ke login.php kalo belom ada sesi

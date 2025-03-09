@@ -1,8 +1,8 @@
 <?php
-$ROOT = "http://".$_SERVER['HTTP_HOST']."/data-anggaran";
+$ROOT = "https://".$_SERVER['HTTP_HOST'];
 session_start();
 date_default_timezone_set('Asia/Jakarta');
-require $_SERVER['DOCUMENT_ROOT'].'/data-anggaran/config/db.php';
+require $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
 
 if ($_SESSION['role'] !== "admin") {
     header("Location: $ROOT/pages/index.php");
@@ -11,7 +11,7 @@ if ($_SESSION['role'] !== "admin") {
 
 // Ambil kode anggaran dari URL
 if (!isset($_GET['kode_anggaran'])) {
-    header("Location: admin.php?error=Ajuan tidak ditemukan.");
+    header("Location: review.php?error=Ajuan tidak ditemukan.");
     exit();
 }
 
@@ -24,7 +24,7 @@ $kode_anggaran = $_GET['kode_anggaran'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Response Ajuan</title>
-    <link rel="stylesheet" href="/data-anggaran/styles/dashboard.css">
+    <link rel="stylesheet" href="/styles/dashboard.css">
 </head>
 <body>
     <div class="container">
@@ -39,7 +39,7 @@ $kode_anggaran = $_GET['kode_anggaran'];
             <button type="submit" name="reject" class="btn btn-reject">Reject</button>
         </form>
         <br>
-        <a href="admin.php" class="btn btn-back">Kembali</a>
+        <a href="review.php" class="btn btn-back btn-danger">Kembali</a>
     </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <?php
-$ROOT = "http://".$_SERVER['HTTP_HOST']."/data-anggaran";
+$ROOT = "https://".$_SERVER['HTTP_HOST'];
 header("Location: $ROOT/login.php");
 exit();
 ?>

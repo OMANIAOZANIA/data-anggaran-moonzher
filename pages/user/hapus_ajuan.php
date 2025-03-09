@@ -1,7 +1,7 @@
 <?php
-$ROOT = "http://".$_SERVER['HTTP_HOST']."/data-anggaran";
+$ROOT = "https://".$_SERVER['HTTP_HOST'];
 session_start();
-require $_SERVER['DOCUMENT_ROOT'].'/data-anggaran/config/db.php';
+require $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
 
 if ($_SESSION['role'] !== "user") {
     header("Location: ../index.php");

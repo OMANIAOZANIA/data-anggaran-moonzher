@@ -1,7 +1,7 @@
 <?php
-$ROOT = "http://".$_SERVER['HTTP_HOST']."/data-anggaran";
+$ROOT = "https://".$_SERVER['HTTP_HOST'];
 session_start();
-require $_SERVER['DOCUMENT_ROOT'].'/data-anggaran/config/db.php';
+require $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
 
 if ($_SESSION['role'] !== "user") {
     header("Location: $ROOT/pages/index.php");
@@ -36,7 +36,7 @@ $stmt->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Daftar Ajuan</title>
-    <link rel="stylesheet" href="/data-anggaran/styles/dashboard.css">
+    <link rel="stylesheet" href="/styles/dashboard.css">
 </head>
 <body>
     <div class="daftar-container">
@@ -95,6 +95,7 @@ $stmt->close();
                     <th>Jumlah (IDR)</th>
                     <th>Keterangan</th>
                     <th>Status</th>
+                    <th>Response</th>
                 </tr>
             </thead>
             <tbody>
@@ -111,7 +112,7 @@ $stmt->close();
                             <td class="<?= ($row['status'] === 'approved') ? 'approved' : 'rejected'; ?>">
                                 <?= ucfirst($row['status']); ?>
                             </td>
-                            <td><?= $row['status']; ?></td>
+                            <td><?= $row['response']; ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php endif; ?>

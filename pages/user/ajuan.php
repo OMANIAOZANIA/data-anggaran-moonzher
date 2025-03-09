@@ -1,8 +1,8 @@
 <?php
-$ROOT = "http://".$_SERVER['HTTP_HOST']."/data-anggaran";
+$ROOT = "https://".$_SERVER['HTTP_HOST'];
 session_start();
 date_default_timezone_set('Asia/Jakarta');
-require $_SERVER['DOCUMENT_ROOT'].'/data-anggaran/config/db.php';
+require $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
 
 if ($_SESSION['role'] !== "user") {
     header("Location: $ROOT/pages/index.php");
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $response = 'Menunggu balasan Administrator.';
 
     $stmt = $conn->prepare("INSERT INTO anggaran (kode_anggaran, user_anggaran, nama_kegiatan, tanggal, jumlah, keterangan, status, response) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssdssss", $kode_anggaran, $user_anggaran, $nama_kegiatan, $tanggal, $jumlah, $keterangan, $status, $response);
+    $stmt->bind_param("ssssisss", $kode_anggaran, $user_anggaran, $nama_kegiatan, $tanggal, $jumlah, $keterangan, $status, $response);
 
     if ($stmt->execute()) {
         $success = "Ajuan berhasil dikirim.";
@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajukan Anggaran</title>
-    <link rel="stylesheet" href="/data-anggaran/styles/dashboard.css">
+    <link rel="stylesheet" href="/styles/dashboard.css">
 </head>
 <body>
     <div class="dashboard-container">

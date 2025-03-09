@@ -1,8 +1,8 @@
 <?php
-$ROOT = "http://".$_SERVER['HTTP_HOST']."/data-anggaran";
+$ROOT = "https://".$_SERVER['HTTP_HOST'];
 session_start();
 date_default_timezone_set('Asia/Jakarta');
-require $_SERVER['DOCUMENT_ROOT'].'/data-anggaran/config/db.php';
+require $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
 
 if ($_SESSION['role'] !== "admin") {
     header("Location: $ROOT/pages/index.php");
@@ -20,7 +20,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Review Ajuan</title>
-    <link rel="stylesheet" href="/data-anggaran/styles/dashboard.css">
+    <link rel="stylesheet" href="/styles/dashboard.css">
 </head>
 <body>
 
@@ -56,13 +56,15 @@ $result = $conn->query($sql);
                 <td><?php echo ucfirst($row['status']); ?></td>
                 <td>
                     <?php if ($row['status'] == 'pending') { ?>
-                        <a href="response.php?kode_anggaran=<?php echo $row['kode_anggaran']; ?>" class="btn">Review</a>
+                        <a href="response.php?kode_anggaran=<?php echo $row['kode_anggaran']; ?>" class="btn btn-small">Review</a>
                     <?php } ?>
                 </td>
             </tr>
         </tbody>
         <?php } ?>
     </table>
+    
+    <a href="dashboard.php" class="btn btn-logout">Kembali</a>
 </div>
 
 </body>

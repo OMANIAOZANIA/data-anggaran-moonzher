@@ -1,8 +1,8 @@
 <?php
-$ROOT = "http://".$_SERVER['HTTP_HOST']."/data-anggaran";
+$ROOT = "https://".$_SERVER['HTTP_HOST'];
 session_start();
 date_default_timezone_set('Asia/Jakarta');
-require $_SERVER['DOCUMENT_ROOT'].'/data-anggaran/config/db.php';
+require $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
 
 if ($_SESSION['role'] !== "admin") {
     header("Location: $ROOT/pages/index.php");
@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } elseif (isset($_POST['reject'])) {
         $status = "rejected";
     } else {
-        header("Location: admin.php?error=Terjadi kesalahan.");
+        header("Location: review.php?error=Terjadi kesalahan.");
         exit();
     }
 
@@ -31,9 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bind_param("sss", $status, $response, $kode_anggaran);
 
     if ($stmt->execute()) {
-        header("Location: admin.php?success=Ajuan berhasil diperbarui.");
+        header("Location: review.php?success=Ajuan berhasil diperbarui.");
     } else {
-        header("Location: admin.php?error=Gagal memperbarui ajuan.");
+        header("Location: review.php?error=Gagal memperbarui ajuan.");
     }
     exit();
 }

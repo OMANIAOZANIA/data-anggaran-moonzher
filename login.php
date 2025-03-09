@@ -1,6 +1,13 @@
 <?php
+$ROOT = "https://".$_SERVER['HTTP_HOST'];
 session_start();
-require __DIR__.'/config/db.php';
+date_default_timezone_set('Asia/Jakarta');
+require $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
+
+if (isset($_SESSION['username']) && isset($_SESSION['nama']) && isset($_SESSION['role'])) {
+    header("Location: $ROOT/pages/index.php");
+    exit();
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'] ?? '';
@@ -21,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
             $_SESSION['nama'] = $user['nama'];
-            header("Location: pages/index.php");
+            header("Location: $ROOT/pages/index.php");
             exit();
         } else {
             $error = "Username atau password salah!";
