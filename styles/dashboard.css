@@ -15,16 +15,25 @@ body {
 
 .container, .dashboard-container, .ajuan-container, .daftar-container {
     background: white;
-    padding: 50px;
+    padding: 35px;
     border-radius: 12px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
-    width: 600px;
+    width: 95%;
+    max-width: 600px;
     animation: fadeIn 0.5s ease-in-out;
 }
 
 .daftar-container {
-    width: 1200px;
+    max-height: 70%;
+    width: 95%;
+    max-width: 1400px;
+    overflow-y: auto;
+}
+
+.table-container {
+    overflow-x: auto;
+    overflow-y: auto;
 }
 
 .logo-section {
@@ -44,7 +53,12 @@ body {
 h1, h2 {
     font-size: 26px;
     color: #333;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    margin-top: 20px;
+    margin-bottom: 5px;
 }
 
 .time {
@@ -108,8 +122,19 @@ textarea {
 .btn-small {
     padding: 8px 8px;
     margin: 2px;
-    font-size: 12px;
-    width: 50px;
+    font-size: 14px;
+    width: 75px;
+}
+
+.btn-medium {
+    padding: 10px 10px;
+    margin: 3px;
+    font-size: 16px;
+    width: 100px;
+}
+
+.btn-caution {
+    background: #f5bf45;
 }
 
 .btn-danger {
@@ -120,6 +145,10 @@ textarea {
     background: #dc3545;
     padding: 14px 14px;
     font-size: 16px;
+}
+
+.btn-caution:hover {
+    background: #9c7a2b;
 }
 
 .btn-logout:hover, .btn-danger:hover {
@@ -143,6 +172,7 @@ textarea {
     margin-bottom: 10px;
 }
 
+/* Tables */
 table {
     width: 100%;
     border-collapse: collapse;

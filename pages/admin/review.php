@@ -21,15 +21,17 @@ $result = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Review Ajuan</title>
     <link rel="stylesheet" href="/styles/dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<div class="daftar-container">
+<div class="container daftar-container">
     <h1>Review Ajuan Anggaran</h1>
 
     <?php if (isset($_GET['success'])) { echo "<p class='success'>" . $_GET['success'] . "</p>"; } ?>
     <?php if (isset($_GET['error'])) { echo "<p class='error'>" . $_GET['error'] . "</p>"; } ?>
 
+    <div class="table-container">
     <table>
         <thead>
             <tr>
@@ -53,18 +55,23 @@ $result = $conn->query($sql);
                 <td><?php echo $row['tanggal']; ?></td>
                 <td>Rp <?php echo number_format($row['jumlah'], 2, ',', '.'); ?></td>
                 <td><?php echo $row['keterangan']; ?></td>
-                <td><?php echo ucfirst($row['status']); ?></td>
+                <td class="<?= ($row['status'] === 'approved') ? 'approved' : 'rejected'; ?>">
+                    <?= ucfirst($row['status']); ?>
+                </td>
                 <td>
                     <?php if ($row['status'] == 'pending') { ?>
-                        <a href="response.php?kode_anggaran=<?php echo $row['kode_anggaran']; ?>" class="btn btn-small">Review</a>
+                        <a href="response.php?kode_anggaran=<?php echo $row['kode_anggaran']; ?>" class="btn btn-medium btn-caution"><i class="fa-solid fa-magnifying-glass"></i>  Review</a>
+                    <?php } else { ?>
+                        <a href="details.php?kode_anggaran=<?php echo $row['kode_anggaran']; ?>" class="btn btn-medium"><i class="fa-solid fa-circle-info"></i>  Details</a>
                     <?php } ?>
                 </td>
             </tr>
         </tbody>
         <?php } ?>
     </table>
+    </div>
     
-    <a href="dashboard.php" class="btn btn-logout">Kembali</a>
+    <a href="dashboard.php" class="btn btn-danger"><i class="fa-solid fa-caret-left"></i> Kembali</a>
 </div>
 
 </body>

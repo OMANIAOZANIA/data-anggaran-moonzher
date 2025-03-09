@@ -54,8 +54,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="date" id="tanggal" name="tanggal" required>
             </div>
             <div class="form-group">
-                <label for="jumlah">Jumlah (IDR):</label>
-                <input type="number" id="jumlah" name="jumlah" step="0.01" required>
+                <label>Jumlah (IDR):</label>
+                <input type="text" id="jumlah" name="jumlah_formatted" required>
+                <input type="hidden" id="jumlah_real" name="jumlah">
             </div>
             <div class="form-group">
                 <label for="keterangan">Keterangan:</label>
@@ -63,7 +64,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <button type="submit" class="btn">Ajukan</button>
         </form>
-        <a href="dashboard.php" class="btn btn-logout">Kembali</a>
+        <script>
+            document.getElementById('jumlah').addEventListener('input', function (e) {
+                let rawValue = e.target.value.replace(/\D/g, '');
+                e.target.value = new Intl.NumberFormat('id-ID').format(rawValue);
+                document.getElementById('jumlah_real').value = rawValue;
+            });
+        </script>
+        <a href="dashboard.php" class="btn btn-danger">Kembali</a>
     </div>
 </body>
 </html>

@@ -60,6 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Ajuan</title>
     <link rel="stylesheet" href="/styles/dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
@@ -75,15 +76,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group">
                 <label>Jumlah (IDR):</label>
-                <input type="number" name="jumlah" value="<?= $data['jumlah']; ?>" step="0.01" required>
+                <input type="text" id="jumlah" name="jumlah_formatted" required>
+                <input type="hidden" id="jumlah_real" name="jumlah">
             </div>
             <div class="form-group">
                 <label>Keterangan:</label>
                 <textarea name="keterangan"><?= $data['keterangan']; ?></textarea>
             </div>
-            <button type="submit" class="btn">Simpan</button>
-            <a href="daftar.php" class="btn btn-danger">Batal</a>
+            <button type="submit" class="btn"><i class="fa-solid fa-floppy-disk"></i> Simpan</button>
+            <a href="daftar.php" class="btn btn-danger"><i class="fa-solid fa-ban"></i> Batal</a>
         </form>
+        <script>
+            document.getElementById('jumlah').addEventListener('input', function (e) {
+                let rawValue = e.target.value.replace(/\D/g, '');
+                e.target.value = new Intl.NumberFormat('id-ID').format(rawValue);
+                document.getElementById('jumlah_real').value = rawValue;
+            });
+        </script>
     </div>
 </body>
 </html>
