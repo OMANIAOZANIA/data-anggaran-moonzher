@@ -52,7 +52,7 @@ $stmt->close();
         <?php endif; ?>
 
         <!-- Tabel Ajuan Pending -->
-        <h3>Ajuan Pending</h3>
+        <h3><i class="fa-solid fa-hourglass-half"></i> Ajuan Pending</h3>
         <div class="table-container">
             <table>
                 <thead>
@@ -88,7 +88,7 @@ $stmt->close();
         </div>
 
         <!-- Tabel Ajuan Approved / Rejected -->
-        <h3>Ajuan Approved / Rejected</h3>
+        <h3><i class="fa-solid fa-star"></i> Ajuan Approved / Rejected</h3>
         <div class="table-container">
             <table>
                 <thead>
@@ -124,7 +124,7 @@ $stmt->close();
             </table>
         </div>
 
-        <a href="dashboard.php" class="btn btn-danger"><i class="fa-solid fa-caret-left"></i> Kembali</a>
+        <a href="dashboard.php" class="btn btn-back btn-danger"><i class="fa-solid fa-caret-left"></i> Kembali</a>
     </div>
 </body>
 </html>

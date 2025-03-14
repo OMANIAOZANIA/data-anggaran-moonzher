@@ -55,7 +55,7 @@ $row = $result->fetch_assoc();
                 <tr><th><i class="fa-solid fa-reply"></i> Response</th><td><?php echo nl2br(htmlspecialchars($row['response'])); ?></td></tr>
             </table>
         </div>
-        <a href="review.php" class="btn btn-danger"><i class="fa-solid fa-caret-left"></i> Kembali</a>
+        <a href="review.php" class="btn btn-back btn-danger"><i class="fa-solid fa-caret-left"></i> Kembali</a>
     </div>
 </body>
 </html>

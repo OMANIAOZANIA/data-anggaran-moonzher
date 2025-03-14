@@ -56,6 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-section">
                 <h2>Manajemen Data Anggaran</h2>
                 <?php if (isset($error)) { echo "<p class='error'>$error</p>"; } ?>
+                <?php if (isset($_GET['success'])) { echo "<p class='success'>Akun telah dibuat, silakan login.</p>"; } ?>
                 <form method="POST">
                     <div class="form-group">
                         <label for="username">Username:</label>

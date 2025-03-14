@@ -38,6 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajukan Anggaran</title>
     <link rel="stylesheet" href="/styles/dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="dashboard-container">
@@ -62,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="keterangan">Keterangan:</label>
                 <textarea id="keterangan" name="keterangan"></textarea>
             </div>
-            <button type="submit" class="btn">Ajukan</button>
+            <button type="submit" class="btn"><i class="fa-solid fa-circle-check"></i> Ajukan</button>
         </form>
         <script>
             document.getElementById('jumlah').addEventListener('input', function (e) {
@@ -71,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 document.getElementById('jumlah_real').value = rawValue;
             });
         </script>
-        <a href="dashboard.php" class="btn btn-danger">Kembali</a>
+        <a href="dashboard.php" class="btn btn-back btn-danger"><i class="fa-solid fa-caret-left"></i> Kembali</a>
     </div>
 </body>
 </html>

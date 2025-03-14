@@ -83,8 +83,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label>Keterangan:</label>
                 <textarea name="keterangan"><?= $data['keterangan']; ?></textarea>
             </div>
-            <button type="submit" class="btn"><i class="fa-solid fa-floppy-disk"></i> Simpan</button>
             <a href="daftar.php" class="btn btn-danger"><i class="fa-solid fa-ban"></i> Batal</a>
+            <button type="submit" class="btn"><i class="fa-solid fa-floppy-disk"></i> Simpan</button>
         </form>
         <script>
             document.getElementById('jumlah').addEventListener('input', function (e) {

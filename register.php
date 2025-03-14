@@ -30,6 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             if ($stmt->execute()) {
                 $success = "Pendaftaran berhasil! Silakan login.";
+                header("Location: login.php?success=");
+                exit();
             } else {
                 $error = "Gagal mendaftar, silakan coba lagi.";
             }

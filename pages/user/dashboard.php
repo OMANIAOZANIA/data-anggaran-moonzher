@@ -26,15 +26,16 @@ if (isset($_POST['logout'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
     <link rel="stylesheet" href="/styles/dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="dashboard-container">
         <h1><?php echo $greeting; ?></h1>
         <p class="time"><?php echo $time_now; ?></p>
-        <a href="ajuan.php" class="btn">Ajukan Anggaran</a>
-        <a href="daftar.php" class="btn">Daftar Ajuan</a>
+        <a href="ajuan.php" class="btn btn-dashboard"><i class="fa-solid fa-plus"></i> Ajukan Anggaran</a>
+        <a href="daftar.php" class="btn btn-dashboard"><i class="fa-solid fa-list"></i> Daftar Ajuan</a>
         <form method="POST">
-            <button type="submit" name="logout" class="btn btn-logout">Logout</button>
+            <button type="submit" name="logout" class="btn btn-logout"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
         </form>
     </div>
 </body>

@@ -55,9 +55,7 @@ $result = $conn->query($sql);
                 <td><?php echo $row['tanggal']; ?></td>
                 <td>Rp <?php echo number_format($row['jumlah'], 2, ',', '.'); ?></td>
                 <td><?php echo $row['keterangan']; ?></td>
-                <td class="<?= ($row['status'] === 'approved') ? 'approved' : 'rejected'; ?>">
-                    <?= ucfirst($row['status']); ?>
-                </td>
+                <td class="<?= $row['status']; ?>"><?= ucfirst($row['status']); ?></td>
                 <td>
                     <?php if ($row['status'] == 'pending') { ?>
                         <a href="response.php?kode_anggaran=<?php echo $row['kode_anggaran']; ?>" class="btn btn-medium btn-caution"><i class="fa-solid fa-magnifying-glass"></i>  Review</a>
@@ -71,7 +69,7 @@ $result = $conn->query($sql);
     </table>
     </div>
     
-    <a href="dashboard.php" class="btn btn-danger"><i class="fa-solid fa-caret-left"></i> Kembali</a>
+    <a href="dashboard.php" class="btn btn-back btn-danger"><i class="fa-solid fa-caret-left"></i> Kembali</a>
 </div>
 
 </body>
