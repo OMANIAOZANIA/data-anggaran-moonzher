@@ -1,6 +1,6 @@
 <?php
 session_start();
-require __DIR__.'/config/db.php'; // File konfigurasi database
+require __DIR__.'/config/db.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama = $_POST['nama'] ?? '';
@@ -12,17 +12,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($password !== $confirm_password) {
         $error = "Password tidak cocok!";
     } else {
-        // Hash password sebelum menyimpan
-        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        // Cek apakah username sudah ada
+        $stmt = $conn->prepare("SELECT id FROM users WHERE username = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $stmt->store_result();
         
-        // Query untuk memasukkan user baru
-        $stmt = $conn->prepare("INSERT INTO users (nama, username, password, role) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("ssss", $nama, $username, $hashed_password, $role);
-        
-        if ($stmt->execute()) {
-            $success = "Pendaftaran berhasil! Silakan login.";
+        if ($stmt->num_rows > 0) {
+            $error = "Username sudah digunakan, silakan pilih yang lain.";
         } else {
-            $error = "Gagal mendaftar, username mungkin sudah digunakan.";
+            // Hash password sebelum menyimpan
+            $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+            
+            // Query untuk memasukkan user baru
+            $stmt = $conn->prepare("INSERT INTO users (nama, username, password, role) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $nama, $username, $hashed_password, $role);
+            
+            if ($stmt->execute()) {
+                $success = "Pendaftaran berhasil! Silakan login.";
+            } else {
+                $error = "Gagal mendaftar, silakan coba lagi.";
+            }
         }
     }
 }
