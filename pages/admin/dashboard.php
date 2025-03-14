@@ -1,5 +1,6 @@
 <?php
-$ROOT = "https://".$_SERVER['HTTP_HOST'];
+$PROTOCOL = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";
+$ROOT = $PROTOCOL . "://" . $_SERVER['HTTP_HOST'];
 session_start();
 date_default_timezone_set('Asia/Jakarta');
 

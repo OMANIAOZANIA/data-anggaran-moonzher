@@ -1,5 +1,6 @@
 <?php
-$ROOT = "https://".$_SERVER['HTTP_HOST'];
+$PROTOCOL = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";
+$ROOT = $PROTOCOL . "://" . $_SERVER['HTTP_HOST'];
 session_start();
 if (!isset($_SESSION['username'])) {
     // balik ke login.php kalo belom ada sesi

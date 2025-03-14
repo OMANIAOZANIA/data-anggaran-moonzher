@@ -1,5 +1,6 @@
 <?php
-$ROOT = "https://".$_SERVER['HTTP_HOST'];
+$PROTOCOL = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https" : "http";
+$ROOT = $PROTOCOL . "://" . $_SERVER['HTTP_HOST'];
 session_start();
 require $_SERVER['DOCUMENT_ROOT'].'/config/db.php';
 

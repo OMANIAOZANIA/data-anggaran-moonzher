@@ -1,0 +1,15 @@
+# Disable directory listing
+Options -Indexes
+
+# Redirect users accessing folders without an index.php
+RewriteEngine On
+
+# If the requested path is a directory but has no index.php, redirect to /index.php
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteCond %{REQUEST_FILENAME}/index.php !-f
+RewriteRule ^(.*)$ /index.php [L,R=302]
+
+# If the requested path does NOT exist (file or folder), redirect to /index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php [L,R=302]
